@@ -1,0 +1,7 @@
+package org.spring.constructorInjection;
+
+public class Teacher {
+	private String school;
+	private String name;
+	
+}

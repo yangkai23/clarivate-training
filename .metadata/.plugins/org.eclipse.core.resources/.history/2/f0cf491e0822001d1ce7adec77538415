@@ -1,0 +1,19 @@
+package com.cl.foodApp.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+
+import com.cl.foodApp.dao.AdminDao;
+import com.cl.foodApp.dto.Admin;
+import com.cl.foodApp.util.ResponseStructure;
+
+public class AdminService {
+@Autowired
+private AdminDao dao;
+	public ResponseEntity<ResponseStructure<Admin>> saveAdmin(Admin admin) {
+		dao.saveAdmin(admin);
+		ResponseStructure< Admin> rs=new ResponseStructure<>();
+		return null;
+	}
+
+}

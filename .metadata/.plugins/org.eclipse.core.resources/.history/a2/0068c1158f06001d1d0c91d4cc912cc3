@@ -1,0 +1,10 @@
+package org.spring.assignment;
+
+public class CarImpl implements IVehicle{
+
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

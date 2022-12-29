@@ -1,0 +1,11 @@
+package com.cl.foodApp.dao;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.cl.foodApp.repository.AdminRepository;
+@Repository
+public class AdminDao {
+	@Autowired
+	private AdminRepository repo;
+}

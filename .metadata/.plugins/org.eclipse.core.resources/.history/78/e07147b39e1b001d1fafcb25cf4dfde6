@@ -1,0 +1,21 @@
+package com.cl.AirlineReservationSystem.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.cl.AirlineReservationSystem.dto.Passenger;
+import com.cl.AirlineReservationSystem.service.PassengerService;
+import com.cl.AirlineReservationSystem.util.ResponseStructure;
+
+@RestController
+public class PassengerController {
+	@Autowired
+	PassengerService service;
+	@PostMapping("/register")
+	public ResponseEntity<ResponseStructure<Passenger>> registerPassenger(@RequestBody Passenger passenger){
+		
+	}
+}

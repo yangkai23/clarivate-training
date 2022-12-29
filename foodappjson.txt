@@ -1,0 +1,8 @@
+//save admin
+{
+    "name":"Shanmukha",
+    "email":"anirudh153421@gmail.com",
+    "password":"12345",
+    "role":"admin"
+}
+

@@ -1,0 +1,43 @@
+package com.cl.foodApp.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.cl.foodApp.dao.AdminDao;
+import com.cl.foodApp.dto.Admin;
+import com.cl.foodApp.dto.BranchManager;
+import com.cl.foodApp.util.AES;
+import com.cl.foodApp.util.ResponseStructure;
+
+@Service
+public class AdminService {
+	@Autowired
+	private AdminDao dao;
+	@Autowired
+	AES aes;
+
+	public ResponseEntity<ResponseStructure<Admin>> saveAdmin(Admin admin) {
+		admin.setPassword(AES.encrypt(admin.getPassword(), "apple"));
+		Admin am = dao.saveAdmin(admin);
+		ResponseStructure<Admin> rs = new ResponseStructure<>();
+		rs.setMessage("Admin added");
+		rs.setT(am);
+		return new ResponseEntity<ResponseStructure<Admin>>(rs, HttpStatus.CREATED);
+	}
+
+	public ResponseEntity<ResponseStructure<BranchManager>> getManager(int id) {
+
+		ResponseStructure<BranchManager> rs = new ResponseStructure<>();
+		rs.setMessage("manager displayed");
+		rs.setT(dao.getAdminById(id).getManager());
+		return new ResponseEntity<ResponseStructure<BranchManager>>(rs, HttpStatus.OK);
+	}
+
+	public ResponseEntity<ResponseStructure<Admin>> editAdmin(Admin admin) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

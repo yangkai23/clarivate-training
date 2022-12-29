@@ -1,0 +1,43 @@
+package org.spring.assignment;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+@Component
+public class BikeImpl implements IVehicle {
+	@Value(value = "1322")
+private int bike_num;
+	@Value(value = "GT 650")
+private String bike_name;
+@Autowired
+@Qualifier(value = "v2Impl")
+private IEngine bike_engine;
+	public void run() {
+		System.out.println("bike has 2 wheels");
+		V2Impl v2Impl=(V2Impl)bike_engine;
+		System.out.println("Bike Engine Number : "+v2Impl.getEngine_num());
+		System.out.println("Bike Name : "+getBike_name());
+		System.out.println("Bike Number : "+getBike_num());
+		System.out.println("Bike Engine Name : "+v2Impl.getEngine_name());
+	}
+	public int getBike_num() {
+		return bike_num;
+	}
+	public void setBike_num(int bike_num) {
+		this.bike_num = bike_num;
+	}
+	public String getBike_name() {
+		return bike_name;
+	}
+	public void setBike_name(String bike_name) {
+		this.bike_name = bike_name;
+	}
+	public IEngine getBike_engine() {
+		return bike_engine;
+	}
+	public void setBike_engine(IEngine bike_engine) {
+		this.bike_engine = bike_engine;
+	}
+
+}

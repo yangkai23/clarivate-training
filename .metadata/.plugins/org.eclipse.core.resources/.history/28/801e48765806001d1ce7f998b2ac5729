@@ -1,0 +1,7 @@
+package springioc_xml;
+
+public class Lion {
+public void roar() {
+	System.out.println("Lion roars");
+}
+}

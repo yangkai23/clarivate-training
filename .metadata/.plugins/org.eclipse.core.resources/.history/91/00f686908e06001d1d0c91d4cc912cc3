@@ -1,0 +1,30 @@
+package org.spring.assignment;
+
+public class BikeImpl implements IVehicle {
+private int vehicle_num;
+private String vehicle_name;
+private IEngine engine;
+	public void run() {
+		System.out.println("bike has 2 wheels");
+		System.out.println();
+	}
+	public int getVehicle_num() {
+		return vehicle_num;
+	}
+	public void setVehicle_num(int vehicle_num) {
+		this.vehicle_num = vehicle_num;
+	}
+	public String getVehicle_name() {
+		return vehicle_name;
+	}
+	public void setVehicle_name(String vehicle_name) {
+		this.vehicle_name = vehicle_name;
+	}
+	public IEngine getEngine() {
+		return engine;
+	}
+	public void setEngine(IEngine engine) {
+		this.engine = engine;
+	}
+
+}

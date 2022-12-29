@@ -1,0 +1,98 @@
+package com.cl.foodApp.dto;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+@Entity
+public class BranchManager {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int manager_id;
+	private String name;
+	private String email;
+	private String password;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn
+	private Admin admin;
+	@OneToMany
+	private List<Staff> staff;
+	@OneToOne
+	private Branch branch;
+	@OneToOne
+	private Menu menu;
+	
+
+	public int getManager_id() {
+		return manager_id;
+	}
+
+	public void setManager_id(int manager_id) {
+		this.manager_id = manager_id;
+	}
+
+	public Menu getMenu() {
+		return menu;
+	}
+
+	public void setMenu(Menu menu) {
+		this.menu = menu;
+	}
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+
+	public Branch getBranch() {
+		return branch;
+	}
+
+	public void setBranch(Branch branch) {
+		this.branch = branch;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public List<Staff> getStaff() {
+		return staff;
+	}
+
+	public void setStaff(List<Staff> staff) {
+		this.staff = staff;
+	}
+
+}

@@ -1,0 +1,5 @@
+package com.cl.AirlineReservationSystem.service;
+
+public class PassengerService {
+
+}

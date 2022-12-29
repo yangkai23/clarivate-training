@@ -1,0 +1,12 @@
+package com.cl.AirlineReservationSystem.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.cl.AirlineReservationSystem.dto.Passenger;
+
+public interface PassengerRepository extends JpaRepository<Passenger, Integer> {
+	public List<Passenger> findAllPassengers(int id); 
+
+}

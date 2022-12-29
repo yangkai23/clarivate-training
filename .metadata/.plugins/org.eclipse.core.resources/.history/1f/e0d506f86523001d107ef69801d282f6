@@ -1,0 +1,87 @@
+package com.cl.foodApp.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.cl.foodApp.dao.FoodProductDao;
+import com.cl.foodApp.dao.MenuDao;
+import com.cl.foodApp.dto.FoodItem;
+import com.cl.foodApp.dto.FoodProduct;
+import com.cl.foodApp.dto.Menu;
+import com.cl.foodApp.exceptions.AdequateEntitiesNotFoundException;
+import com.cl.foodApp.exceptions.NoMenuFoundException;
+import com.cl.foodApp.util.ResponseStructure;
+@Service
+public class MenuService {
+@Autowired
+MenuDao dao;
+@Autowired
+FoodProductDao fpdao;
+	public ResponseEntity<ResponseStructure<Menu>> saveMenu(Menu menu) {
+		menu.setProducts(fpdao.getAllProducts());
+		Menu mn = dao.saveMenu( menu);
+		ResponseStructure< Menu> rs=new ResponseStructure<>();
+		rs.setMessage("menu added");
+		rs.setT(mn);
+		return new ResponseEntity<ResponseStructure<Menu>>(rs,HttpStatus.CREATED);
+	}
+	public ResponseEntity<ResponseStructure<List<FoodProduct>>> displayMenu() {
+		List<FoodProduct> list=fpdao.getAllProducts();
+		ResponseStructure< List<FoodProduct>> rs=new ResponseStructure<>();
+		rs.setMessage("Here's the menu");
+		rs.setT(list);
+		return new ResponseEntity<ResponseStructure<List<FoodProduct>>>(rs,HttpStatus.OK);
+	}
+	public ResponseEntity<ResponseStructure<List<Menu>>> getAllMenu() {
+		ResponseStructure< List<Menu>> rs=new ResponseStructure<>();
+		rs.setMessage("Here's the all the menu's");
+		rs.setT(dao.getAllMenu());
+		return new ResponseEntity<ResponseStructure<List<Menu>>>(rs,HttpStatus.OK);
+	}
+	public ResponseEntity<ResponseStructure<Menu>> editMenu(Menu menu) {
+		Menu mn = dao.getMenuById(menu.getMenu_id());
+		if (mn == null)
+			throw new NoMenuFoundException();
+		ArrayList<FoodProduct> list = new ArrayList<>();
+		for (FoodProduct id : menu.getProducts()) {
+			list.add(fpdao.getProductByID(id.getProduct_id()));
+		}
+		menu.setProducts(list);
+		ResponseStructure<Menu> rs = new ResponseStructure<>();
+		rs.setMessage("menu updated");
+		rs.setT(dao.updateMenu(menu));
+		return new ResponseEntity<ResponseStructure<Menu>>(rs, HttpStatus.OK);
+	}
+	public ResponseEntity<ResponseStructure<Menu>> deleteMenu(int id) {
+		Menu mn = dao.getMenuById(id);
+		if (mn == null)
+			throw new NoMenuFoundException();
+		if(dao.getMenuCount()==1)
+			throw new AdequateEntitiesNotFoundException();
+		ResponseStructure<Menu> rs = new ResponseStructure<>();
+		rs.setMessage("menu deleted");
+		rs.setT(dao.deleteMenu(id));
+		return new ResponseEntity<ResponseStructure<Menu>>(rs, HttpStatus.OK);
+	}
+	public ResponseEntity<ResponseStructure<Menu>> getMenuByID(int id) {
+		ResponseStructure< Menu> rs=new ResponseStructure<>();
+		rs.setMessage("Here's the menu's");
+		rs.setT(dao.getMenuById(id));
+		return new ResponseEntity<ResponseStructure<Menu>>(rs,HttpStatus.OK);
+	}
+	public ResponseEntity<ResponseStructure<FoodProduct>> deleteProd(Menu menu,int prod_id) {
+		for(FoodProduct prod:menu.getProducts()) {
+			if(prod.getProduct_id()==prod_id)
+				fpdao.deleteProduct(prod_id);
+		}
+		ResponseStructure< FoodProduct> rs=new ResponseStructure<>();
+		rs.setMessage("FoodProduct deleted");
+		rs.setT(fpdao.getProductByID(prod_id));
+		return new ResponseEntity<ResponseStructure<FoodProduct>>(rs,HttpStatus.OK);
+	}
+}

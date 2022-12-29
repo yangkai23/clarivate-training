@@ -1,0 +1,11 @@
+package org.spring.autowire;
+
+import org.springframework.stereotype.Component;
+
+public class Pen implements IItems {
+@Component
+	public void usedFor() {
+		System.out.println("used to write");
+	}
+
+}

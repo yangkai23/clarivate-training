@@ -1,0 +1,7 @@
+package springioc_xml;
+
+public class Lion implements IAnimal{
+public void sound() {
+	System.out.println("Lion roars");
+}
+}

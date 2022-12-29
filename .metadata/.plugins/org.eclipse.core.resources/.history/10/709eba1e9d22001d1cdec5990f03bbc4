@@ -1,0 +1,16 @@
+package com.cl.foodApp.dao;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.cl.foodApp.dto.FoodOrder;
+import com.cl.foodApp.repository.FoodOrderRepository;
+@Repository
+public class FoodOrderDao {
+@Autowired
+FoodOrderRepository repo;
+	public FoodOrder saveOrder(FoodOrder order) {
+		return repo.save(order);
+	}
+
+}

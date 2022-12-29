@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ResourceNavigator">
+		<item key="ResourceViewer.STORE_SORT_TYPE" value="1"/>
+		<item key="ResourceWorkingSetFilter.STORE_WORKING_SET" value="Aggregate for window 1656566882476"/>
+	</section>
+	<section name="NewWizardAction">
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.m2e.core.wizards.Maven2ProjectWizard"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.m2e"/>
+		</list>
+	</section>
+	<section name="ChooseWorkspaceDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="652"/>
+		<item key="DIALOG_Y_ORIGIN" value="341"/>
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
+		</list>
+	</section>
+	<section name="SmartImportWizard">
+		<item key="SmartImportRootWizardPage.STORE_HIDE_ALREADY_OPEN" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
+		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
+		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\U6070304\Downloads\wetransfer_final_2022-08-24_1936\Final\app"/>
+			<item value="C:\Users\U6070304\Downloads\food_app2\food_app2"/>
+			<item value="C:\Users\U6070304\Downloads\food_app2\food_app"/>
+			<item value="C:\Users\U6070304\Downloads\wetransfer_app_2022-08-23_0445\app"/>
+			<item value="C:\Users\U6070304\Downloads\training project\foodApp"/>
+			<item value="C:\Users\U6070304\Downloads\springboot\AirlineReservationSystem\AirlineReservationSystem"/>
+			<item value="C:\Users\U6070304\Downloads\SpringJWTSecurity-master\SpringJWTSecurity-master"/>
+			<item value="C:\Users\U6070304\Downloads\spring-security-jwt\spring-security-jwt"/>
+			<item value="C:\Users\U6070304\Downloads\spring-security-jwt"/>
+			<item value="C:\Users\U6070304\Downloads\order_details\order_details"/>
+			<item value="C:\Users\U6070304\Downloads\order_details"/>
+			<item value="C:\Users\U6070304\Downloads\cart_management\cart_management"/>
+			<item value="C:\Users\U6070304\Downloads\cart_management"/>
+			<item value="C:\Users\U6070304\Downloads\employee_management\employee_management"/>
+		</list>
+	</section>
+</section>

@@ -1,0 +1,13 @@
+package org.spring.autowire;
+
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
+@Component
+@Primary
+public class PenImpl implements IItems {
+
+	public void usedFor() {
+		System.out.println("used to write");
+	}
+
+}

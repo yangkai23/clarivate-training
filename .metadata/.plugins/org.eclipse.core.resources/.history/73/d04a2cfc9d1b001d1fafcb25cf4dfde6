@@ -1,0 +1,20 @@
+package com.cl.AirlineReservationSystem.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.cl.AirlineReservationSystem.dao.PassengerDao;
+import com.cl.AirlineReservationSystem.dto.Passenger;
+import com.cl.AirlineReservationSystem.util.ResponseStructure;
+
+@Service
+public class PassengerService {
+	@Autowired
+	PassengerDao dao;
+	public ResponseEntity<ResponseStructure<Passenger>> registerPassenger( Passenger passenger){
+		ResponseStructure<Passenger> structure=new ResponseStructure<>();
+		
+		return dao.savePassenger(passenger);
+	}
+}

@@ -1,0 +1,36 @@
+package com.cl.foodApp.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.cl.foodApp.dao.BranchDao;
+import com.cl.foodApp.dao.BranchManagerDao;
+import com.cl.foodApp.dao.StaffDao;
+import com.cl.foodApp.dto.BranchManager;
+import com.cl.foodApp.util.AES;
+import com.cl.foodApp.util.ResponseStructure;
+
+@Service
+public class BranchManagerService {
+@Autowired
+BranchManagerDao dao;
+@Autowired
+StaffDao sdao;
+@Autowired
+BranchDao bdao;
+@Autowired
+AES aes;
+	public ResponseEntity<ResponseStructure<BranchManager>> savemanager(BranchManager manager) {
+		manager.setStaff(sdao.getAllStaff());
+		manager.setBranch(bdao.getBranchById(manager.getBranch().getBranch_id()));
+		manager.setPassword(AES.encrypt(manager.getPassword(), "apple"));
+		BranchManager br = dao.saveManager(manager);
+		ResponseStructure< BranchManager> rs=new ResponseStructure<>();
+		rs.setMessage("manager added");
+		rs.setT(br);
+		return new ResponseEntity<ResponseStructure<BranchManager>>(rs,HttpStatus.CREATED);
+	}
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move package &apos;hibernate_proj.sample_proj&apos; to &apos;hibernate_proj/src/main/java&apos;&#x0D;&#x0A;- Original project: &apos;first_proj&apos;&#x0D;&#x0A;- Destination element: &apos;hibernate_proj/src/main/java&apos;&#x0D;&#x0A;- Original element: &apos;first_proj/src/hibernate_proj.sample_proj&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move package" destination="=hibernate_proj/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/" element1="/src&lt;hibernate_proj.sample_proj" flags="589830" fragments="1" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.movePackages" stamp="1657869163713" version="1.0"/>
+</session>

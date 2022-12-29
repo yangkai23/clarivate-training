@@ -1,0 +1,10 @@
+package org.spring.annotationconfig;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MainPerson {
+	ApplicationContext context=new ClassPathXmlApplicationContext("person.xml");
+	Person person=context.getBean("person",Person.class);
+	
+}

@@ -1,0 +1,10 @@
+package com.cl.foodApp.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.cl.foodApp.dto.FoodProduct;
+import com.cl.foodApp.dto.Staff;
+
+public interface UserRepository extends JpaRepository<Staff, Integer> {
+
+}

@@ -1,0 +1,32 @@
+package com.cl.foodApp.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.cl.foodApp.dao.BranchDao;
+import com.cl.foodApp.dto.Branch;
+import com.cl.foodApp.exceptions.NoBranchFoundException;
+import com.cl.foodApp.util.ResponseStructure;
+
+@Service
+public class BranchService {
+	@Autowired
+	BranchDao dao;
+	public ResponseEntity<ResponseStructure<Branch>> saveBranch(Branch branch) {
+		Branch br = dao.saveBranch(branch);
+		ResponseStructure< Branch> rs=new ResponseStructure<>();
+		rs.setMessage("Branch added");
+		rs.setT(br);
+		return new ResponseEntity<ResponseStructure<Branch>>(rs,HttpStatus.CREATED);
+	}
+	public ResponseEntity<ResponseStructure<Branch>> editBranch(Branch branch) {
+		if(dao.getBranchById(branch.getBranch_id())==null)
+			throw new NoBranchFoundException();
+		ResponseStructure< Branch> rs=new ResponseStructure<>();
+		rs.setMessage("Branch updated");
+		rs.setT(dao.updateBranch(branch));
+		return new ResponseEntity<ResponseStructure<Branch>>(rs,HttpStatus.CREATED);
+	}
+}

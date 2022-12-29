@@ -1,0 +1,11 @@
+package org.spring.autowire;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class Student {
+	@Autowired
+	IItems items;
+		public void iseItems() {
+			items.usedFor();
+		}
+}

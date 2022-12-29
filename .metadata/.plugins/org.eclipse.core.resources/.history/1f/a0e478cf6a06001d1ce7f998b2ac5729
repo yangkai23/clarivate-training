@@ -1,0 +1,7 @@
+package org.spring.constructorInjection;
+
+public class MainStudentTeacher {
+public static void main(String[] args) {
+	
+}
+}

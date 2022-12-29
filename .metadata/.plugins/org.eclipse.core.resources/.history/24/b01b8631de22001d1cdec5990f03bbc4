@@ -1,0 +1,48 @@
+package com.cl.foodApp.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.cl.foodApp.dto.FoodProduct;
+import com.cl.foodApp.dto.Menu;
+import com.cl.foodApp.service.MenuService;
+import com.cl.foodApp.util.ResponseStructure;
+
+@RestController
+public class MenuController {
+	@Autowired
+	MenuService service;
+	@PostMapping("/savemenu")
+	public ResponseEntity<ResponseStructure<Menu>> saveMenu(@RequestBody Menu menu){
+		return service.saveMenu(menu);
+	}
+	@GetMapping("/showmenu")
+	public ResponseEntity<ResponseStructure<List<FoodProduct>>> displayMenu(){
+		return service.displayMenu();
+	}
+	@GetMapping("/displayallmenu")
+	public ResponseEntity<ResponseStructure<List<Menu>>> displayAllMenu(){
+		return service.displayProducts();
+	}
+	@PutMapping("/editmenu")
+	public ResponseEntity<ResponseStructure<Menu>> editMenu(@RequestBody Menu menu){
+		return service.editProduct(menu);
+	}
+	@DeleteMapping("/deletemenu")
+	public ResponseEntity<ResponseStructure<Menu>> deleteMenu(@RequestParam int id){
+		return service.deleteProduct(id);
+	}
+	@GetMapping("/getmenubyid")
+	public ResponseEntity<ResponseStructure<Menu>> getMenu(@RequestParam int id){
+		return service.getProductByID(id);
+	}
+}

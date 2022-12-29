@@ -1,0 +1,31 @@
+package com.cl.foodApp.dao;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.cl.foodApp.dto.FoodOrder;
+import com.cl.foodApp.repository.FoodOrderRepository;
+@Repository
+public class FoodOrderDao {
+@Autowired
+FoodOrderRepository repo;
+
+	public FoodOrder saveOrder(FoodOrder order) {
+		return repo.save(order);
+	}
+	public FoodOrder getOrderById(int id) {
+		return repo.getReferenceById(id);
+	}
+	public List<FoodOrder> getAllOrders(){
+		return repo.findAll();
+	}
+	public FoodOrder updateOrder(FoodOrder order) {
+		return repo.save(order);
+	}
+	public FoodOrder deleteOrder(int id) {
+		repo.deleteById(id);
+		return repo.getReferenceById(id);
+	}
+}

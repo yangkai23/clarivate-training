@@ -1,0 +1,5 @@
+package com.cl.foodApp.dto;
+
+public class Admin {
+
+}

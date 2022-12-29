@@ -1,0 +1,25 @@
+package com.cl.foodApp.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.cl.foodApp.dao.FoodProductDao;
+import com.cl.foodApp.dto.FoodProduct;
+import com.cl.foodApp.util.ResponseStructure;
+
+@Service
+public class FoodProductService {
+@Autowired
+FoodProductDao dao;
+	public ResponseEntity<ResponseStructure<FoodProduct>> saveProduct(FoodProduct product) {
+		
+		FoodProduct fp = dao.saveProduct(product);
+		ResponseStructure< FoodProduct> rs=new ResponseStructure<>();
+		rs.setMessage("product added");
+		rs.setT(fp);
+		return new ResponseEntity<ResponseStructure<FoodProduct>>(rs,HttpStatus.CREATED);
+	}
+
+}

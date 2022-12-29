@@ -1,0 +1,8 @@
+package org.spring.autowire;
+
+public class Bike implements IItems{
+	public void usedFor() {
+		System.out.println("used to ride");
+	}
+
+}

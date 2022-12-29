@@ -1,0 +1,24 @@
+package com.cl.foodApp.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+import com.cl.foodApp.dao.MenuDao;
+import com.cl.foodApp.dto.FoodProduct;
+import com.cl.foodApp.dto.Menu;
+import com.cl.foodApp.util.ResponseStructure;
+
+public class MenuService {
+@Autowired
+MenuDao dao;
+	public ResponseEntity<ResponseStructure<Menu>> saveProduct(Menu menu) {
+		Menu mn = dao.saveProduct( menu);
+		ResponseStructure< Menu> rs=new ResponseStructure<>();
+		rs.setMessage("product added");
+		rs.setT(mn);
+		return new ResponseEntity<ResponseStructure<Menu>>(rs,HttpStatus.CREATED);
+		return null;
+	}
+
+}

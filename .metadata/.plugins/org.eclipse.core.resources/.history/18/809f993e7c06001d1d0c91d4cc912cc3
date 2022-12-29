@@ -1,0 +1,13 @@
+package org.spring.annotationconfig;
+
+import org.springframework.stereotype.Component;
+
+@Component(value = "person")
+public class Person {
+	public void walk() {
+		System.out.println("walking");
+	}
+	public void talk() {
+		System.out.println("talking");
+	}
+}

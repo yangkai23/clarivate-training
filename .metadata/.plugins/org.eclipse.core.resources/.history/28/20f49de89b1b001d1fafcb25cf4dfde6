@@ -1,0 +1,5 @@
+package com.cl.AirlineReservationSystem.config;
+
+public class AppConfig {
+
+}

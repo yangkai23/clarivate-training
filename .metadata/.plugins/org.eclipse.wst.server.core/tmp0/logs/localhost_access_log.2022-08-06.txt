@@ -1,0 +1,10 @@
+127.0.0.1 - - [06/Aug/2022:13:23:12 +0530] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [06/Aug/2022:13:23:17 +0530] "GET /employee_spring_mvc/WEB-INF/classes/com/cl/controller/EmployeeController.java HTTP/1.1" 404 682
+0:0:0:0:0:0:0:1 - - [06/Aug/2022:13:23:17 +0530] "GET /favicon.ico HTTP/1.1" 404 762
+0:0:0:0:0:0:0:1 - - [06/Aug/2022:13:23:41 +0530] "GET /employee_spring_mvc/WEB-INF/classes/com/cl/controller/EmployeeController.java HTTP/1.1" 404 682
+0:0:0:0:0:0:0:1 - - [06/Aug/2022:13:23:41 +0530] "GET /favicon.ico HTTP/1.1" 404 762
+127.0.0.1 - - [06/Aug/2022:13:26:02 +0530] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [06/Aug/2022:13:26:07 +0530] "GET /employee_spring_mvc/Home.jsp HTTP/1.1" 200 278
+0:0:0:0:0:0:0:1 - - [06/Aug/2022:13:26:07 +0530] "GET /favicon.ico HTTP/1.1" 404 762
+0:0:0:0:0:0:0:1 - - [06/Aug/2022:13:26:10 +0530] "GET /employee_spring_mvc/register HTTP/1.1" 200 646
+0:0:0:0:0:0:0:1 - - [06/Aug/2022:13:26:27 +0530] "POST /employee_spring_mvc/saveemployee HTTP/1.1" 200 900

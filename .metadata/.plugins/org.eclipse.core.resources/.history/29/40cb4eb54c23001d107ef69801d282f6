@@ -1,0 +1,80 @@
+package com.cl.foodApp.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.cl.foodApp.dao.FoodItemDao;
+import com.cl.foodApp.dao.FoodProductDao;
+import com.cl.foodApp.dto.FoodItem;
+import com.cl.foodApp.dto.FoodOrder;
+import com.cl.foodApp.dto.FoodProduct;
+import com.cl.foodApp.util.ResponseStructure;
+
+@Service
+public class FoodProductService {
+	@Autowired
+	FoodProductDao dao;
+	@Autowired
+	FoodItemService fiservice;
+	@Autowired
+	FoodOrderService foservice;
+
+	public ResponseEntity<ResponseStructure<FoodProduct>> saveProduct(FoodProduct product) {
+		FoodProduct fp = dao.saveProduct(product);
+		ResponseStructure<FoodProduct> rs = new ResponseStructure<>();
+		rs.setMessage("product added");
+		rs.setT(fp);
+		return new ResponseEntity<ResponseStructure<FoodProduct>>(rs, HttpStatus.CREATED);
+	}
+
+	public ResponseEntity<ResponseStructure<FoodProduct>> editProduct(FoodProduct product) {
+		FoodProduct fp = dao.getProductByID(product.getProduct_id());
+		if (fp == null)
+			throw new NoProductFoundException();
+		ResponseStructure<FoodProduct> rs = new ResponseStructure<>();
+		rs.setMessage("product updated");
+		rs.setT(dao.updateProduct(product));
+		return new ResponseEntity<ResponseStructure<FoodProduct>>(rs, HttpStatus.OK);
+	}
+
+	public ResponseEntity<ResponseStructure<FoodProduct>> deleteProduct(int id) {
+		FoodProduct fp = dao.getProductByID(id);
+		if (fp == null)
+			throw new NoProductFoundException();
+		FoodProduct prod=dao.deleteProduct(id);
+		int x=0;
+		for(FoodItem item:fiservice.getAllItems().getBody().getT()) {
+			if(item.getProduct().getProduct_id()==id)
+				fiservice.deleteItem(item.getItem_id());
+			x=item.getItem_id();
+		}
+		for(FoodOrder order:foservice.getAllOrder().getBody().getT()) {
+			for(FoodItem item:order.getItems()) {
+				if(item.getItem_id()==x)
+					foservice.deleteOrder(x);
+			}
+		}
+		ResponseStructure<FoodProduct> rs = new ResponseStructure<>();
+		rs.setMessage("product deleted");
+		rs.setT(prod);
+		return new ResponseEntity<ResponseStructure<FoodProduct>>(rs, HttpStatus.OK);
+	}
+
+	public ResponseEntity<ResponseStructure<FoodProduct>> getProductByID(int id) {
+		ResponseStructure<FoodProduct> rs = new ResponseStructure<>();
+		rs.setMessage("product fetched");
+		rs.setT(dao.getProductByID(id));
+		return new ResponseEntity<ResponseStructure<FoodProduct>>(rs, HttpStatus.OK);
+	}
+
+	public ResponseEntity<ResponseStructure<List<FoodProduct>>> displayProducts() {
+		ResponseStructure<List<FoodProduct>> rs = new ResponseStructure<>();
+		rs.setMessage("product fetched");
+		rs.setT(dao.getAllProducts());
+		return new ResponseEntity<ResponseStructure<List<FoodProduct>>>(rs, HttpStatus.OK);
+	}
+}

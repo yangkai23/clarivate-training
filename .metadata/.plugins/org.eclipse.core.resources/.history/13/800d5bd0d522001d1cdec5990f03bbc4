@@ -1,0 +1,41 @@
+package com.cl.foodApp.service;
+
+import java.util.ArrayList;
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.cl.foodApp.dao.FoodItemDao;
+import com.cl.foodApp.dao.FoodOrderDao;
+import com.cl.foodApp.dto.FoodItem;
+import com.cl.foodApp.dto.FoodOrder;
+import com.cl.foodApp.util.ResponseStructure;
+@Service
+public class FoodOrderService {
+@Autowired
+FoodOrderDao dao;
+@Autowired
+FoodItemDao fidao;
+	public ResponseEntity<ResponseStructure<FoodOrder>> saveOrder(FoodOrder order) {
+		ArrayList<FoodItem> list=new ArrayList<>();
+		for(FoodItem id:order.getItems()) {
+			list.add(fidao.getItemById(id.getItem_id()));
+		}
+		order.setItems(list);
+		order.setOrderDeliveredTime(new Date().toString());
+		FoodOrder fo = dao.saveOrder(order);
+		ResponseStructure< FoodOrder> rs=new ResponseStructure<>();
+		rs.setMessage("order added");
+		rs.setT(fo);
+		return new ResponseEntity<ResponseStructure<FoodOrder>>(rs,HttpStatus.CREATED);
+	}
+	public ResponseEntity<ResponseStructure<FoodOrder>> editOrder(FoodOrder order) {
+		FoodOrder fo=dao.getOrderById(order.getOrder_id());
+		order.setOrderDeliveredTime(new Date().toString());
+		
+	}
+	
+}

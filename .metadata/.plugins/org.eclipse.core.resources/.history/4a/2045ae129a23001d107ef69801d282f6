@@ -1,0 +1,107 @@
+package com.cl.food_app.dto;
+
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+public class Orders {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	private String status;
+	private double total_price;
+	private String order_time;
+	private String deliver_time;
+	private String customer_name;
+	private long customer_number;
+	private String customer_email;
+	@ManyToOne
+	@JoinColumn
+	Staff staff;
+	@OneToMany(mappedBy = "orders",cascade = CascadeType.ALL)
+	List<Items> items;
+	public String getCustomer_email() {
+		return customer_email;
+	}
+	public void setCustomer_email(String customer_email) {
+		this.customer_email = customer_email;
+	}
+	public List<Items> getItems() {
+		return items;
+	}
+	public void setItems(List<Items> items) {
+		this.items = items;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public void setTotal_price(double total_price) {
+		this.total_price = total_price;
+	}
+
+	
+	
+	public Staff getStaff() {
+		return staff;
+	}
+	public void setStaff(Staff staff) {
+		this.staff = staff;
+	}
+	
+	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStstus(String status) {
+		this.status = status;
+	}
+	public double getTotal_price() {
+		return total_price;
+	}
+	public void setTotal_price(Double total_price) {
+		this.total_price = total_price;
+	}
+	public String getOrder_time() {
+		return order_time;
+	}
+	public void setOrder_time(String order_time) {
+		this.order_time = order_time;
+	}
+	public String getDeliver_time() {
+		return deliver_time;
+	}
+	public void setDeliver_time(String deliver_time) {
+		this.deliver_time = deliver_time;
+	}
+	public String getCustomer_name() {
+		return customer_name;
+	}
+	public void setCustomer_name(String customer_name) {
+		this.customer_name = customer_name;
+	}
+	public long getCustomer_number() {
+		return customer_number;
+	}
+	public void setCustomer_number(long customer_number) {
+		this.customer_number = customer_number;
+	}
+	
+
+}

@@ -1,0 +1,104 @@
+package com.cl.foodApp.dto;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+@Entity
+public class FoodOrder {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int order_id;
+	private String status;
+	private int orderPreparationTime;
+	private Date orderDeliveredTime;
+	private String customerName;
+	private String customerMobileNumber;
+	private String customerMailId;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn
+	private Staff staff;
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+	private List<FoodItem> items;
+
+	public int getOrder_id() {
+		return order_id;
+	}
+
+	public void setOrder_id(int order_id) {
+		this.order_id = order_id;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public int getOrderPreparationTime() {
+		return orderPreparationTime;
+	}
+
+	public void setOrderPreparationTime(int orderPreparationTime) {
+		this.orderPreparationTime = orderPreparationTime;
+	}
+
+	public Date getOrderDeliveredTime() {
+		return orderDeliveredTime;
+	}
+
+	public void setOrderDeliveredTime(Date orderDeliveredTime) {
+		this.orderDeliveredTime = orderDeliveredTime;
+	}
+
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+
+	public String getCustomerMobileNumber() {
+		return customerMobileNumber;
+	}
+
+	public void setCustomerMobileNumber(String customerMobileNumber) {
+		this.customerMobileNumber = customerMobileNumber;
+	}
+
+	public String getCustomerMailId() {
+		return customerMailId;
+	}
+
+	public void setCustomerMailId(String customerMailId) {
+		this.customerMailId = customerMailId;
+	}
+
+	public Staff getStaff() {
+		return staff;
+	}
+
+	public void setStaff(Staff staff) {
+		this.staff = staff;
+	}
+
+	public List<FoodItem> getItems() {
+		return items;
+	}
+
+	public void setItems(List<FoodItem> items) {
+		this.items = items;
+	}
+
+}

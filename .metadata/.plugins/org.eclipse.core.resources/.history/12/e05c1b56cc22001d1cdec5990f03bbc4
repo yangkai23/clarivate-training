@@ -1,0 +1,19 @@
+package com.cl.foodApp.dao;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.cl.foodApp.dto.BranchManager;
+import com.cl.foodApp.repository.BranchManagerRepository;
+
+@Repository
+public class BranchManagerDao {
+@Autowired
+BranchManagerRepository repo;
+	public BranchManager saveManager(BranchManager manager) {
+		return repo.save(manager);
+	}
+public BranchManager getManagerById(int id) {
+	return repo.findById(id).get();
+}
+}

@@ -1,0 +1,52 @@
+package com.cl.food_app.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.cl.food_app.dto.Orders;
+import com.cl.food_app.service.OrdersService;
+import com.cl.food_app.structure.ResponseStructure;
+
+@RestController
+@Component
+public class OrdersController {
+
+	@Autowired
+	OrdersService ordersService;
+	
+	@PostMapping("/saveorders")
+	public ResponseEntity<ResponseStructure<Orders>> saveManager(@RequestBody Orders orders){
+		return ordersService.saveorders(orders);
+	}
+	
+	@GetMapping("/getorders")
+	public ResponseEntity<ResponseStructure<Orders>> getby(@RequestParam int id){
+		return ordersService.getby(id);
+	}
+	
+	@DeleteMapping("/deleteordres")
+	public ResponseEntity<ResponseStructure<Orders>> delete(@RequestParam int id){
+		return ordersService.delete(id);
+	}
+	
+	@PutMapping("/updateorders")
+	public ResponseEntity<ResponseStructure<Orders>> update(@RequestBody Orders orders,@RequestParam int id){
+		return ordersService.update(orders,id);
+	}
+	
+	@GetMapping("/getallorders")
+	public ResponseEntity<ResponseStructure<List<Orders>>> getall(){
+		return ordersService.getall();
+	}
+}

@@ -1,0 +1,5 @@
+package com.foodapp.app.service;
+
+public class InvalidCredentialsException extends RuntimeException {
+
+}

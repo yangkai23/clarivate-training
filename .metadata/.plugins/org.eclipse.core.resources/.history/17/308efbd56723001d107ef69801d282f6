@@ -1,0 +1,28 @@
+package com.cl.foodApp.exceptions;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import com.cl.foodApp.util.ResponseStructure;
+
+
+public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler {
+	@ExceptionHandler(IdNotFoundException.class)
+	public ResponseEntity<ResponseStructure<String>> idNotFoundException(IdNotFoundException exception){
+		ResponseStructure<String> structure=new ResponseStructure<>();
+		structure.setMessage(exception.getMessage());
+		structure.setStatus(HttpStatus.NOT_FOUND.value());
+		structure.setT("No such ID in Database");
+		return new ResponseEntity<ResponseStructure<String>>(structure,HttpStatus.NOT_FOUND);
+	}
+	@ExceptionHandler(NoDataFoundException.class)
+	public ResponseEntity<ResponseStructure<String>> noDataFoundException(NoDataFoundException exception){
+		ResponseStructure<String> structure=new ResponseStructure<>();
+		structure.setMessage(exception.getMessage());
+		structure.setStatus(HttpStatus.NOT_FOUND.value());
+		structure.setT("Database is Empty");
+		return new ResponseEntity<ResponseStructure<String>>(structure,HttpStatus.NOT_FOUND);
+	}
+}

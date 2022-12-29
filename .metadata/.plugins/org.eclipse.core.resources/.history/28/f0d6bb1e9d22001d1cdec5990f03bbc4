@@ -1,0 +1,16 @@
+package com.cl.foodApp.dao;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.cl.foodApp.dto.FoodItem;
+import com.cl.foodApp.repository.FoodItemRepository;
+@Repository
+public class FoodItemDao {
+@Autowired
+FoodItemRepository repo;
+	public FoodItem saveItem(FoodItem item) {
+		return repo.save(item);
+	}
+
+}

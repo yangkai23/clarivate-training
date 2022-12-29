@@ -1,0 +1,12 @@
+package org.spring.assignment;
+
+public class BikeImpl implements IVehicle {
+private int vehicle_num;
+private String vehicle_name;
+private IEngine engine;
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

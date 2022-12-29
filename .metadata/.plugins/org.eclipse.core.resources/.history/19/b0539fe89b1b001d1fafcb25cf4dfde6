@@ -1,0 +1,5 @@
+package com.cl.AirlineReservationSystem.util;
+
+public class ResponseStructure {
+
+}

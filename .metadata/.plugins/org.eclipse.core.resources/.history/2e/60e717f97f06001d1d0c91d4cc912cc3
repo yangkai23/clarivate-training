@@ -1,0 +1,8 @@
+package org.spring.autowire;
+
+public class Student {
+	IItems items;
+		public void iseItems() {
+			items.usedFor();
+		}
+}

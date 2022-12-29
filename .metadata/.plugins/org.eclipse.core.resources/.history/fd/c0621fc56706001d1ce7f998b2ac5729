@@ -1,0 +1,6 @@
+package org.spring.constructorInjection;
+
+public class Teacher {
+	private Student student;
+	
+}

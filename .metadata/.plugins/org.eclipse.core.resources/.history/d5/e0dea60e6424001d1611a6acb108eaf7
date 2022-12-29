@@ -1,0 +1,5 @@
+package com.foodapp.app.controller;
+
+public class LoginController {
+
+}

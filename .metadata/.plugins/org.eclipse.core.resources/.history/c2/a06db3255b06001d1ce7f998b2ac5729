@@ -1,0 +1,7 @@
+package springioc_xml;
+
+public class Cow {
+	public void sound() {
+		System.out.println("cow Moo's");
+	}
+}

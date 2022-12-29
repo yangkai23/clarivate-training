@@ -1,0 +1,26 @@
+package com.cl.foodApp.dao;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.cl.foodApp.dto.Admin;
+import com.cl.foodApp.repository.AdminRepository;
+@Repository
+public class AdminDao {
+	@Autowired
+	private AdminRepository repo;
+
+	public Admin saveAdmin(Admin admin) {
+		return repo.save(admin);
+		
+	}
+	public Admin getAdminById(int id) {
+		return repo.findById(id).get();
+	}
+	public Admin updateAdmin(Admin admin) {
+		return repo.save(admin);
+	}
+	public int getAdminCount() {
+		return repo.count();
+	}
+}

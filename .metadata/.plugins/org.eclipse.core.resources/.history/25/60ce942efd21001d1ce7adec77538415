@@ -1,0 +1,16 @@
+package com.cl.foodApp.dto;
+
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+public class FoodProduct {
+private int id;
+private String name;
+private String type;
+private String description;
+private boolean availability;
+private double price;
+@ManyToOne
+@JoinColumn
+private Menu menu;
+}

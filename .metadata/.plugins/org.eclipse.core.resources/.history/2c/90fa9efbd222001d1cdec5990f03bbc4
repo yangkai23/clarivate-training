@@ -1,0 +1,37 @@
+package com.cl.foodApp.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.cl.foodApp.dao.FoodItemDao;
+import com.cl.foodApp.dao.FoodProductDao;
+import com.cl.foodApp.dto.FoodItem;
+import com.cl.foodApp.exceptions.ItemNotFoundException;
+import com.cl.foodApp.util.ResponseStructure;
+@Service
+public class FoodItemService {
+@Autowired
+FoodItemDao dao;
+@Autowired
+FoodProductDao fpdao;
+	public ResponseEntity<ResponseStructure<FoodItem>> saveItem(FoodItem item) {
+		item.setProduct(fpdao.getProductByID(item.getProduct().getProduct_id()));
+		FoodItem fi = dao.saveItem(item);
+		ResponseStructure< FoodItem> rs=new ResponseStructure<>();
+		rs.setMessage("Item added");
+		rs.setT(fi);
+		return new ResponseEntity<ResponseStructure<FoodItem>>(rs,HttpStatus.CREATED);
+	}
+	public ResponseEntity<ResponseStructure<FoodItem>> editItem(FoodItem item) {
+		if(dao.getItemById(item.getItem_id())==null)
+			throw new ItemNotFoundException();
+		ResponseStructure< FoodItem> rs=new ResponseStructure<>();
+		rs.setMessage("Item updated");
+		rs.setT(fi);
+		return new ResponseEntity<ResponseStructure<FoodItem>>(rs,HttpStatus.OK);
+	}
+	
+
+}

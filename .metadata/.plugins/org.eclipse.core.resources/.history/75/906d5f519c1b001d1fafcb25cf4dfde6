@@ -1,0 +1,37 @@
+package com.cl.AirlineReservationSystem.util;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class ResponseStructure<T> {
+	private String name;
+	private String message;
+	private String email;
+	private T t;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public T getT() {
+		return t;
+	}
+	public void setT(T t) {
+		this.t = t;
+	}
+	
+	
+}

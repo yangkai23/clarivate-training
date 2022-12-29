@@ -1,0 +1,5 @@
+package com.cl.foodApp.service;
+
+public class NoMenuFoundException extends RuntimeException {
+
+}

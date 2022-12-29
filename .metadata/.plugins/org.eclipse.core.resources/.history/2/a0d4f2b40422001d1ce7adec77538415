@@ -1,0 +1,5 @@
+package com.cl.foodApp.repository;
+
+public interface FoodOrderRepository {
+
+}

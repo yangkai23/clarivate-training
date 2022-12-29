@@ -1,0 +1,18 @@
+package com.cl.AirlineReservationSystem.dao;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.cl.AirlineReservationSystem.dto.Passenger;
+import com.cl.AirlineReservationSystem.repository.PassengerRepository;
+
+@Repository
+public class PassengerDao {
+	@Autowired
+PassengerRepository repository;
+
+	public Passenger savePassenger(Passenger passenger) {
+	return repository.save(passenger);
+	}
+	
+}

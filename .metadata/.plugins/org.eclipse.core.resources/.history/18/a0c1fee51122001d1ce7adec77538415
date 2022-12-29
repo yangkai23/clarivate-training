@@ -1,0 +1,14 @@
+package com.cl.foodApp.dao;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.cl.foodApp.dto.Branch;
+import com.cl.foodApp.repository.BranchRepository;
+
+public class BranchDao {
+	@Autowired
+	BranchRepository repo;
+	public Branch saveBranch(Branch branch) {
+		return repo.save(branch);
+	}
+}

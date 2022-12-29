@@ -1,0 +1,5 @@
+package org.spring.constructorInjection;
+
+public class Student {
+
+}

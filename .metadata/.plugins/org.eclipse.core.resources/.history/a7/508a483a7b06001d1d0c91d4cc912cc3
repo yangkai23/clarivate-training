@@ -1,0 +1,10 @@
+package org.spring.annotationconfig;
+
+public class Person {
+	public void walk() {
+		System.out.println("walking");
+	}
+	public void talk() {
+		System.out.println("talking");
+	}
+}
